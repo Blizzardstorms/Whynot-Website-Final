@@ -15,9 +15,9 @@ const Home = () => {
               Quality workmanship you can trust.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link 
-                to="/contact" 
-                className="btn btn-primary inline-block"
+              <Link
+                to="/contact"
+                className="btn btn-primary inline-block font-semibold bg-white text-primary border border-primary hover:bg-primary hover:text-white hover:font-bold transition-colors transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
                 Get a Free Consultation
               </Link>
@@ -37,12 +37,12 @@ const Home = () => {
         <div className="container">
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">10+</div>
+              <div className="text-3xl font-bold text-primary">30+</div>
               <div className="text-gray-600">Years Experience</div>
             </div>
             <div className="h-12 w-px bg-gray-200 hidden md:block"></div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">200+</div>
+              <div className="text-3xl font-bold text-primary">50+</div>
               <div className="text-gray-600">Projects Completed</div>
             </div>
             <div className="h-12 w-px bg-gray-200 hidden md:block"></div>
@@ -164,7 +164,25 @@ const Home = () => {
           </Link>
         </div>
       </section>
+    {/* ImageGallery Placeholder */}
+    <section className="py-16">
+      <div className="container">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">Featured Projects</h2>
+        {/* // Add images here later */}
+      </div>
+    </section>
+
+    {/* Hit Counter */}
+    <div className="fixed bottom-2 right-2 z-50 text-sm text-gray-500 flex items-center space-x-1 select-none pointer-events-none">
+      <span role="img" aria-label="visits">👁️</span>
+      <img
+        src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=ynotbuild.co.za&count_bg=%231E3A8A&title_bg=%23F97316&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false"
+        alt="hits"
+        className="inline h-4 align-middle ml-1"
+        style={{ pointerEvents: 'auto' }}
+      />
     </div>
+  </div>
   );
 };
 

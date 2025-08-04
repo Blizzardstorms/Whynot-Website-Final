@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logoLight from '../../assets/images/logo-light.png';
 
 const Header = () => {
   return (
@@ -7,19 +8,9 @@ const Header = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img 
-            src="/images/logo-300x80.png" 
+            src={logoLight} 
             alt="WhyNotBuild Logo" 
-            className="h-12 w-auto"
-            onError={(e) => {
-              // Fallback to text if image fails to load
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              target.nextSibling?.remove();
-              const text = document.createElement('span');
-              text.className = 'text-2xl font-bold text-primary';
-              text.textContent = 'WhyNotBuild';
-              target.parentNode?.insertBefore(text, target.nextSibling);
-            }}
+            className="h-12 w-auto max-h-12 object-contain"
           />
           <span className="sr-only">WhyNotBuild</span>
         </Link>
