@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // This would be replaced with actual image imports in a real project
@@ -56,11 +56,11 @@ const sampleImages = [
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [activeImage, setActiveImage] = useState<number | null>(null);
-  const [isComparing, setIsComparing] = useState(false);
+
   const [sliderPosition, setSliderPosition] = useState(50);
   
   // In a real app, you would fetch images from an API
-  const [images, setImages] = useState(sampleImages);
+  const images = sampleImages;
   
   // Handle slider movement
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
