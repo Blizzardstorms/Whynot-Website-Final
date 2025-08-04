@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="relative bg-gray-900 text-white py-20 md:py-32">
+      <section className="relative bg-[#1E3A8A] text-white py-20 md:py-32">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -23,7 +23,7 @@ const Home = () => {
               </Link>
               <Link 
                 to="/gallery" 
-                className="btn bg-white text-gray-900 hover:bg-gray-100"
+                className="btn bg-[#F97316] text-white hover:bg-orange-500"
               >
                 View Our Work
               </Link>
@@ -101,7 +101,7 @@ const Home = () => {
       {/* Testimonials */}
       <section className="py-16 bg-gray-50">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="container px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
             <div className="w-20 h-1 bg-primary mx-auto"></div>
           </div>
