@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,16 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#1a365d',
-          dark: '#2c5282',
-          light: '#4299e1',
-        },
-        secondary: {
-          DEFAULT: '#c05621',
-          dark: '#9c4221',
-          light: '#ed8936',
-        },
+        primary: '#1E3A8A',
+        'primary-dark': '#1B2E6F',
+        secondary: '#F97316',
+        'secondary-dark': '#EA580C',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
