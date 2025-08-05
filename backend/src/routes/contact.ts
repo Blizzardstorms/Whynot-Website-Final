@@ -5,6 +5,7 @@ const router = Router();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 router.post('/', async (req, res) => {
+  console.log('📨 Contact form received:', req.body); // DEBUG LOG
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields.' });

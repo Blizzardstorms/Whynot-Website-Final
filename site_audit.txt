@@ -1,0 +1,110 @@
+=== SITE AUDIT ===
+
+=== WORKSPACE CONFIG ===
+
+=== ROOT CONFIG (.env, package.json) ===
+{
+	"devDependencies": {
+		"tailwindcss": "^4.1.11",
+		"postcss": "^8.5.6",
+		"autoprefixer": "^10.4.21"
+	}
+}
+
+=== CONTACT ROUTE BACKEND ===
+import { Router } from 'express';
+import sgMail from '@sendgrid/mail';
+
+const router = Router();
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
+
+router.post('/', async (req, res) => {
+  console.log('📨 Contact form received:', req.body); // DEBUG LOG
+  const { name, email, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields.' });
+  }
+  try {
+    await sgMail.send({
+      to: 'stafford@ynotbuild.co.za',
+      from: 'noreply@ynotbuild.co.za', // Must match verified sender
+      subject: `New Contact Form from ${name}`,
+      text: `From: ${name} <${email}>\n\n${message}`,
+    });
+    res.status(200).json({ success: true });
+  } catch (err: any) {
+    console.error('SendGrid error:', err.response?.body || err.message);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
+});
+
+export default router;
+
+=== SERVER FILE ===
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import contactRoutes from './routes/contact';
+import newsletterRoutes from './routes/newsletter';
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/contact', contactRoutes);
+app.use('/api/newsletter', newsletterRoutes);
+
+app.get('/api/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+=== ROUTE REGISTRATION FILE ===
+
+=== MAIN TS CONFIGS ===
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+
+=== FRONTEND API CALLS ===
+
+=== FRONTEND ROUTING FILES ===
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\App.tsx:1:import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+=== ALL BACKEND LOGIC FILES ===
+E:\CascadeProjects\ynotbuildwebsite\backend\src\server.ts
+E:\CascadeProjects\ynotbuildwebsite\backend\src\routes\contact.ts
+E:\CascadeProjects\ynotbuildwebsite\backend\src\routes\newsletter.ts
+
+=== ALL FRONTEND PAGES ===
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\About.tsx
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\Blog.tsx
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\Contact.tsx
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\Gallery.tsx
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\Home.tsx
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\NotFound.tsx
+E:\CascadeProjects\ynotbuildwebsite\frontend\src\pages\Tutorials.tsx

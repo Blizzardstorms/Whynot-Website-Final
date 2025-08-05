@@ -17,7 +17,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 to="/contact"
-                className="btn btn-primary inline-block font-semibold bg-white text-primary border border-primary hover:bg-primary hover:text-white hover:font-bold transition-colors transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="btn btn-primary inline-block font-semibold bg-white text-primary border border-primary hover:bg-primary hover:text-white hover:font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               >
                 Get a Free Consultation
               </Link>
@@ -178,8 +178,7 @@ const Home = () => {
       <img
         src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=ynotbuild.co.za&count_bg=%231E3A8A&title_bg=%23F97316&icon=&icon_color=%23E7E7E7&title=visits&edge_flat=false"
         alt="hits"
-        className="inline h-4 align-middle ml-1"
-        style={{ pointerEvents: 'auto' }}
+        className="inline h-4 align-middle ml-1 custom-style"
       />
     </div>
   </div>

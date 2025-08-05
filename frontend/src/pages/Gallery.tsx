@@ -149,8 +149,8 @@ const Gallery = () => {
                   className="absolute inset-0 w-full h-full object-contain"
                 />
                 <div 
-                  className="absolute inset-y-0 right-0 w-1/2 overflow-hidden"
-                  style={{ width: `${100 - sliderPosition}%` }}
+                  className="absolute inset-y-0 right-0 w-1/2 overflow-hidden dynamic-width"
+                  style={{ '--slider-width': `${100 - sliderPosition}%` } as React.CSSProperties}
                 >
                   <img 
                     src={images[activeImage - 1].after} 
@@ -159,8 +159,8 @@ const Gallery = () => {
                   />
                 </div>
                 <div 
-                  className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize flex items-center justify-center"
-                  style={{ left: `${sliderPosition}%` }}
+                  className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize flex items-center justify-center dynamic-left"
+                  style={{ '--slider-left': `${sliderPosition}%` } as React.CSSProperties}
                 >
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-md">
                     <svg className="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -175,15 +175,19 @@ const Gallery = () => {
                   value={sliderPosition}
                   onChange={handleSliderChange}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
+                  aria-label="Image comparison slider"
+                  title="Image comparison slider"
                 />
               </div>
               <div className="p-4">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xl font-bold">{images[activeImage - 1].title}</h3>
                   <button 
-                    onClick={() => setActiveImage(null)}
-                    className="text-gray-500 hover:text-gray-700"
-                  >
+                      onClick={() => setActiveImage(null)}
+                      className="text-gray-500 hover:text-gray-700"
+                      aria-label="Close modal"
+                      title="Close modal"
+                    >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
