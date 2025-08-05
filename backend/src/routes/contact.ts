@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { PrismaClient } from '@prisma/client';
+import sgMail from '@sendgrid/mail';
 
 const router = Router();
-const prisma = new PrismaClient();
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 router.post('/', async (req, res) => {
   const { name, email, message } = req.body;
@@ -10,12 +10,16 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields.' });
   }
   try {
-    const contact = await prisma.contactMessage.create({
-      data: { name, email, message }
+    await sgMail.send({
+      to: 'stafford@ynotbuild.co.za',
+      from: 'noreply@ynotbuild.co.za', // Must match verified sender
+      subject: `New Contact Form from ${name}`,
+      text: `From: ${name} <${email}>\n\n${message}`,
     });
-    return res.status(201).json({ success: true, contact });
-  } catch (err) {
-    return res.status(500).json({ error: 'Failed to save message.' });
+    res.status(200).json({ success: true });
+  } catch (err: any) {
+    console.error('SendGrid error:', err.response?.body || err.message);
+    res.status(500).json({ error: 'Failed to send email' });
   }
 });
 
