@@ -24,7 +24,8 @@ export default function ContactPage() {
     setStatus('sending');
 
     try {
-      const res = await fetch('https://ynotbuild-backend.onrender.com/api/contact', {
+      const API = import.meta.env.VITE_API_BASE;
+      const res = await fetch(`${API}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
