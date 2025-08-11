@@ -54,4 +54,9 @@ A modern, responsive website for WhyNotBuild construction company built with:
 
 ## Deployment
 
-This project is configured for deployment on Render.com. See the respective `render.yaml` files in each directory for deployment settings.
+This project can be deployed to any Node-compatible host (e.g., VPS, cPanel with Node, Docker on a VM, or a managed Node platform). Configure your CI/CD or provisioning to:
+
+1. Install dependencies in both `backend/` and `frontend/`.
+2. Build backend TypeScript to `backend/dist/` and build the frontend with Vite.
+3. Start backend with `node backend/dist/server.js` and serve the frontend build via your chosen HTTP server.
+4. Provide environment variables for the backend (SMTP_*, TO_EMAIL, DATABASE_URL if using Prisma, PORT).
