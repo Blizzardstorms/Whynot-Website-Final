@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --brand: #000000; --accent: #ff7a00; }
+body { @apply bg-white text-gray-800; }
+.btn { @apply inline-flex items-center px-5 py-3 rounded-lg font-semibold shadow hover:opacity-90 transition; }
+.btn-primary { background: var(--accent); color: #fff; }
