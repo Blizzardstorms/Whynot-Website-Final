@@ -1,0 +1,9 @@
+{
+  "name": "ynotbuild-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter frontend dev\" \"pnpm --filter backend dev\"",
+    "generate": "pnpm --filter backend exec prisma generate",
+    "docker-up": "docker compose up --build"
+  }
+}
